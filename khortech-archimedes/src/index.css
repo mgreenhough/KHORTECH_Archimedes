@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-blue: #00f3ff;
+  --neon-green: #39ff14;
+  --neon-pink: #ff00ff;
+  --neon-orange: #ff9e00;
+  --neon-red: #ff3333;
+}
+
+body {
+  @apply bg-gray-950 text-white;
+  font-family: 'Rubik', system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Neon tech title styling */
+.neon-title {
+  font-family: 'Franklin Gothic', sans-serif;
+  color: #fff;
+  text-shadow:
+    0 0 5px #00E6FF,
+    0 0 10px #00E6FF,
+    0 0 20px #00E6FF,
+    0 0 40px #00a3ff,
+    0 0 80px #00a3ff;
+  letter-spacing: 0.1em;
+}
+
+/* Custom scrollbar for horizontal stacks - thicker for easier selection */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 12px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Mobile: hide scrollbars but keep scroll functionality */
+@media (max-width: 768px) {
+  .scrollbar-thin::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-thin {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Prevent double-tap zoom on drag handles (mobile) */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Active/tap state for mobile (replaces hover) */
+.tap-active:active {
+  opacity: 0.7;
+}
+
+/* Ensure inputs don't zoom on iOS */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* --- Utility patterns --- */
+
+/* Primary action button */
+.btn-primary {
+  @apply px-4 py-2 bg-neon-blue/20 text-neon-blue border border-neon-blue/40 rounded-lg text-sm font-medium active:bg-neon-blue/30 transition-colors tap-active;
+}
+
+/* Secondary / ghost button */
+.btn-ghost {
+  @apply px-4 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg text-sm font-medium active:bg-gray-700 transition-colors tap-active;
+}
+
+/* Danger button */
+.btn-danger {
+  @apply text-neon-red bg-neon-red/10 px-3 py-2 rounded text-xs font-medium;
+}
+
+/* Card base */
+.card {
+  @apply relative rounded-xl p-4 flex flex-col gap-3 border-2 transition-all duration-200;
+}
+
+/* Card variants */
+.card-front {
+  @apply bg-gray-950 border-gray-700;
+}
+
+.card-back {
+  @apply bg-gray-900/80 border-gray-700;
+}
+
+/* Input base */
+.input-neon {
+  @apply bg-transparent border-b border-neon-blue text-white outline-none focus:border-neon-blue transition-colors;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm;
+}
+
+/* Modal panel */
+.modal-panel {
+  @apply bg-gray-900 border-2 border-neon-orange rounded-xl p-6 max-w-md w-full mx-4 shadow-2xl;
+}
+
+/* Badge styles */
+.badge-public {
+  @apply text-emerald-400 border border-emerald-400/30 bg-emerald-400/10 px-2 py-1 rounded text-xs;
+}
+
+.badge-private {
+  @apply text-gray-500 border border-gray-600/30 bg-gray-600/10 px-2 py-1 rounded text-xs;
+}
